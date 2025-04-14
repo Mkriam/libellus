@@ -1,0 +1,38 @@
+services:
+  web:
+    build:
+      context: ./
+      dockerfile: dockerfile
+    container_name: web_libreria
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./vistas:/var/www/html
+      - ./default-ssl.conf:/etc/apache2/sites-available/default-ssl.conf
+    networks:
+      - red1
+    depends_on:
+      - db
+
+  
+  db:
+    image: mysql
+    container_name: db_libreria
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: rootlib
+      MYSQL_USER: miriam
+      MYSQL_PASSWORD: libreria123
+    volumes:
+      - ./datos/:/var/lib/mysql
+    networks:
+      - red1
+
+
+volumes:
+  datos:
+
+networks:
+  red1:

@@ -1,0 +1,127 @@
+/* General */
+body {
+    background-color: #fdf6e3; /* Fondo cálido, estilo pergamino */
+    color: #5d4037; /* Texto marrón suave */
+    margin: 0;
+    padding: 0;
+    font-family: 'Georgia', serif; /* Fuente clásica y elegante */
+}
+
+/* Navbar */
+.navbar {
+    background: linear-gradient(90deg, #8d6e63, #a1887f); /* Gradiente de tonos marrones */
+    border-bottom: 2px solid #5d4037;
+}
+
+.navbar-brand, .nav-link {
+    color: #ffffff;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar-brand:hover, .nav-link:hover {
+    color: #ffe082; /* Amarillo cálido para los efectos hover */
+}
+
+/* Header */
+header {
+    background: url(img/fondo-header.jpg) no-repeat center/cover; /* Imagen evocadora */
+    color: #ffffff;
+    text-align: center;
+    padding: 100px 20px;
+    font-weight: bold;
+    border-bottom: 3px solid #8d6e63;
+}
+
+header h1 {
+    font-size: 3em;
+    text-shadow: 
+        1px 1px 4px #5d4037,
+        -1px -1px 4px #5d4037; 
+}
+
+header p {
+    font-size: 1.5em;
+    text-shadow: 
+        1px 1px 3px #5d4037,  
+        -1px -1px 3px #5d4037; 
+}
+
+/* Input */
+input {
+    background-color: #fce4ec; /* Rosa suave */
+    border: 1px solid #5d4037;
+    color: #5d4037;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+input:focus {
+    border-color: #ffab91;
+    outline: none;
+}
+
+/* Botones */
+.boton {
+    background-color: #6d4c41; /* Marrón profundo */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.boton:hover {
+    background-color: #5d4037;
+}
+
+/* Tarjetas */
+.card {
+    background-color: #fff8e1; /* Amarillo cálido */
+    border: 1px solid #5d4037;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05); /* Pequeño efecto al pasar el mouse */
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.card-title {
+    color: #6d4c41;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    color: #5d4037;
+    font-size: 1rem;
+}
+
+/* Footer */
+footer {
+    background-color: #5d4037; /* Marrón oscuro */
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    font-size: 0.9em;
+    box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.2);
+}
+
+footer p {
+    margin: 0;
+    font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5em;
+    }
+    
+    header p {
+        font-size: 1.2em;
+    }
+}
