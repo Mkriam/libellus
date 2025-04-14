@@ -1,10 +1,11 @@
 USE libellus;
+set names 'utf8mb4';
 
 -- Usuarios
-INSERT INTO USUARIO (nom_usu, email, clave_usu, foto_perfil) VALUES
-('lector1', 'lector1@example.com', 'clave123', NULL),
-('fan_hp', 'harrypotterfan@mail.net', 'potterhead', NULL),
-('amantedelamisterio', 'misterios@detective.org', 'pistas789', NULL);
+INSERT INTO USUARIO (nom_usu, email, clave_usu, foto_perfil, administrador) VALUES
+('lector1', 'lector1@example.com', 'clave123', NULL, 1),
+('fan_hp', 'harrypotterfan@mail.net', 'potterhead', NULL, 0),
+('amantedelamisterio', 'misterios@detective.org', 'pistas789', NULL, 0);
 
 -- Géneros
 INSERT INTO GENERO(nom_genero) VALUES
@@ -15,7 +16,7 @@ INSERT INTO AUTOR(nom_autor) VALUES
 ('J.K. Rowling'), ('Agatha Christie'), ('Harper Lee'), ('Suzanne Collins'), ('Paulo Coelho'), ('Gabriel García Márquez'), ('George Orwell'), ('F. Scott Fitzgerald'), ('Fiódor Dostoievski'), ('Frank Herbert'), ('Miguel de Cervantes'), ('Jane Austen');
 
 -- Libros
-INSERT INTO LIBRO(titulo, portada, sinopsis, fec_publicación, url_compra) VALUES
+INSERT INTO LIBRO(titulo, portada, sinopsis, fec_publicacion, url_compra) VALUES
 ('Harry Potter y la piedra filosofal', NULL, 'El día en que cumple once años, Harry Potter descubre que es hijo de dos conocidos hechiceros, de los que ha heredado poderes mágicos. Deberá acudir entonces a una famosa escuela de magia y hechicería: Howards.', '1997-06-26', 'https://www.casadellibro.com/libro-harry-potter-y-la-piedra-filosofal-rustica/9788498386318/2428061'),
 ('Harry Potter y la cámara secreta', NULL, 'Hay una conspiración, Harry Potter. Una conspiración para hacer que este año sucedan las cosas más terribles en el Colegio Hogwarts de Magia y Hechicería..', '2015-03-26', 'https://www.casadellibro.com/libro-harry-potter-y-la-camara-secreta--rustica/9788498386325/2428062'),
 ('Harry Potter y el prisionero de Azkaban', NULL, 'Cuando el autobús noctámbulo irrumpe en una calle oscura y frena con fuertes chirridos delante de Harry, comienza para él un nuevo curso en Hogwarts, lleno de acontecimientos extraordinarios.', '2015-03-26', 'https://www.casadellibro.com/libro-harry-potter-y-el-prisionero-de-azkaban-rustica/9788498386332/2506473'),
@@ -51,12 +52,9 @@ INSERT INTO POSEE (id_libro, id_genero) VALUES
 (12, 3), -- Crimen y castigo - Misterio
 (12, 5), -- Crimen y castigo - Drama
 (13, 4), -- El gran Gatsby - Drama
-(13, 1), -- El gran Gatsby - Ficción
 (14, 6), -- Don Quijote de la Mancha - Aventura
 (14, 7), -- Don Quijote de la Mancha - Comedia
-(14, 1), -- Don Quijote de la Mancha - Ficción
 (15, 5), -- Matar a un ruiseñor - Drama
-(1, 1), -- Matar a un ruiseñor - Ficción
 (16, 2), -- Los juegos del hambre - Ciencia Ficción
 (16, 6), -- Los juegos del hambre - Aventura
 (17, 2), -- Dune - Ciencia Ficción 
@@ -85,32 +83,29 @@ INSERT INTO ESCRIBE (id_libro, id_autor) VALUES
 (18, 2); -- Asesinato en el Orient Express - Agatha Christie
 
 -- Grupos
-INSERT INTO GRUPO (id_grupo, nom_grupo, clave_grupo, descripción, id_administrador) VALUES
-('G001', 'Amantes de Harry Potter', 'magia2025', 'Grupo para discutir los libros de Harry Potter.', 'fan_hp'),
-('G002', 'Club de Lectura de Misterio', 'enigmasCl', 'Leemos y comentamos novelas de misterio y suspense.', 'amantedelamisterio'),
+INSERT INTO GRUPO (nom_grupo, clave_grupo, descripcion, id_lider) VALUES
+('Amantes de Harry Potter', 'magia2025', 'Grupo para discutir los libros de Harry Potter.', 'fan_hp'),
+('Club de Lectura de Misterio', 'enigmasCl', 'Leemos y comentamos novelas de misterio y suspense.', 'amantedelamisterio');
 
 -- Pertenece
 INSERT INTO PERTENECE (nom_usu, id_grupo, fec_union) VALUES
-('lector1', 'G003', '2025-04-01'),
-('fan_hp', 'G001', '2025-03-15'),
-('fan_hp', 'G003', '2025-04-05'),
-('amantedelamisterio', 'G002', '2025-03-20'),
-('amantedelamisterio', 'G003', '2025-04-10');
+('lector1', 1, '2025-04-01'),
+('fan_hp', 2, '2025-03-15'),
+('amantedelamisterio', 2, '2025-03-20'),
+('amantedelamisterio', 1, '2025-04-10');
 
 -- Contiene
 INSERT INTO CONTIENE (id_grupo, id_libro, fecha) VALUES
-('G001', 1, '2025-03-16'),
-('G001', 2, '2025-03-23'),
-('G002', 18, '2025-03-25'),
-('G002', 12, '2025-04-08'),
-('G003', 9, '2025-04-02'),
-('G003', 14, '2025-04-09');
+(1, 1, '2025-03-16'),
+(1, 2, '2025-03-23'),
+(2, 18, '2025-03-25'),
+(2, 12, '2025-04-08');
 
 -- Guarda
 INSERT INTO GUARDA (nom_usu, id_libro, comentario, estado) VALUES
-('lector1', 9, 'Un clásico imprescindible.', 'Leído'),
-('lector1', 14, 'Me encantó la edición.', 'Leído'),
-('fan_hp', 1, 'El inicio de una gran saga.', 'Leído'),
+('lector1', 9, 'Un clásico imprescindible.', 'Pendiente'),
+('lector1', 14, 'Me encantó la edición.', 'Pendiente'),
+('fan_hp', 1, 'El inicio de una gran saga.', 'Pendiente'),
 ('fan_hp', 3, 'Mi libro favorito de la serie.', 'Leyendo'),
-('amantedelamisterio', 18, 'Un final sorprendente.', 'Leído'),
+('amantedelamisterio', 18, 'Un final sorprendente.', 'Pendiente'),
 ('amantedelamisterio', 12, 'Intriga desde la primera página.', 'Leyendo');

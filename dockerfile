@@ -19,5 +19,4 @@ RUN a2enmod ssl && \
     a2ensite default-ssl
 
 # Copiar mis vistas a la ruta de apache
-COPY ./vistas /var/www/html/
-
+COPY ./src /var/www/html/

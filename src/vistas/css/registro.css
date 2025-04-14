@@ -1,0 +1,99 @@
+body {
+    margin: 0;
+    font-family: 'Georgia', serif;
+    background-image: url('../../img/fondo.png'); /* Asegúrate de que la ruta sea correcta */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding-top: 60px;
+    box-sizing: border-box;
+}
+
+.registration-container {
+    background-color: rgba(244, 241, 250, 0.8);
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-container {
+    margin-bottom: 30px;
+}
+
+.logo-container img {
+    max-width: 150px;
+    height: auto;
+}
+
+.registration-form {
+    width: 100%;
+}
+
+h1 {
+    color: #7b68ee;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.register-button {
+    background-color: #a9a9f5;  /* Use login button color */
+    color: white;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.register-button:hover {
+    background-color: #8f8ff7; /* Use login button hover color */
+}
+
+.login-link {
+    margin-top: 25px;
+    color: #555;
+}
+
+.login-link a {
+    color: #7b68ee;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,98 @@
+body {
+    margin: 0;
+    font-family: 'Georgia', serif;
+    background-image: url('../../img/fondo.png'); /* Asegúrate de que la ruta sea correcta */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding-top: 60px; /* Ajuste para el logo */
+    box-sizing: border-box;
+}
+
+.login-container {
+    background-color: rgba(244, 241, 250, 0.8); /* Similar color de fondo con transparencia */
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 400px; /* Ajustar el ancho máximo según sea necesario */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrar el logo y el formulario horizontalmente */
+}
+
+.logo-container {
+    margin-bottom: 30px; /* Más espacio debajo del logo */
+}
+
+.logo-container img {
+    max-width: 150px; /* Ajustar el tamaño del logo según sea necesario */
+    height: auto;
+}
+
+.login-form {
+    width: 100%;
+}
+
+h1 {
+    color: #7b68ee; /* Color morado similar al tema */
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 25px; /* Más espacio entre los campos */
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: bold;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 12px; /* Mayor relleno para los campos */
+    border: 1px solid #ddd;
+    border-radius: 8px; /* Bordes más redondeados */
+    font-size: 16px;
+}
+
+.login-button {
+    background-color: #a9a9f5; /* Color del botón de inicio de sesión */
+    color: white;
+    padding: 14px 24px; /* Mayor relleno para el botón */
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 20px; /* Espacio antes del botón */
+}
+
+.login-button:hover {
+    background-color: #8f8ff7;
+}
+
+.register-link {
+    margin-top: 25px;
+    color: #555;
+}
+
+.register-link a {
+    color: #7b68ee;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}

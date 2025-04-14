@@ -1,12 +1,13 @@
 CREATE DATABASE IF NOT EXISTS libellus;
 USE libellus;
-
+set names 'utf8mb4';
 
 CREATE TABLE USUARIO (
     nom_usu VARCHAR(20) PRIMARY KEY,
     email VARCHAR(100) NOT NULL,
-    clave_usu VARCHAR(100) NOT NULL,
-    foto_perfil TEXT
+    clave_usu VARCHAR(300) NOT NULL,
+    foto_perfil TEXT,
+    administrador BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE GENERO (
@@ -23,8 +24,8 @@ CREATE TABLE LIBRO (
     id_libro INT PRIMARY KEY AUTO_INCREMENT,
     titulo VARCHAR(200),
     portada TEXT,
-    sinopsis VARCHAR(200),
-    fec_publicación DATE,
+    sinopsis VARCHAR(400),
+    fec_publicacion DATE,
     url_compra TEXT
 );
 
@@ -49,12 +50,12 @@ CREATE TABLE ESCRIBE (
 );
 
 CREATE TABLE GRUPO (
-    id_grupo CHAR(4) PRIMARY KEY,
+    id_grupo INT PRIMARY KEY AUTO_INCREMENT,
     nom_grupo VARCHAR(100),
-    clave_grupo VARCHAR(100),
-    descripción sinopsis VARCHAR(200),
-    id_administrador VARCHAR(20),
-    FOREIGN KEY (id_administrador) REFERENCES USUARIO(nom_usu)
+    clave_grupo VARCHAR(300),
+    descripcion VARCHAR(200),
+    id_lider VARCHAR(20) NULL,
+    FOREIGN KEY (id_lider) REFERENCES USUARIO(nom_usu)
         ON DELETE SET NULL ON UPDATE CASCADE
 );
 
@@ -84,7 +85,7 @@ CREATE TABLE GUARDA (
     nom_usu VARCHAR(50),
     id_libro INT,
     comentario TEXT,
-    estado ENUM('Leído', 'Leyendo', 'Por leer'),
+    estado ENUM('Completado', 'Leyendo', 'Pendiente'),
     PRIMARY KEY (nom_usu, id_libro),
     FOREIGN KEY (nom_usu) REFERENCES USUARIO(nom_usu)
         ON DELETE CASCADE ON UPDATE CASCADE,
