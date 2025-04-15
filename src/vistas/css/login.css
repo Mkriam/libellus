@@ -13,7 +13,7 @@ body {
     box-sizing: border-box;
 }
 
-.login-container {
+.login {
     background-color: rgba(244, 241, 250, 0.8); /* Similar color de fondo con transparencia */
     border-radius: 15px;
     padding: 40px;
@@ -26,16 +26,16 @@ body {
     align-items: center; /* Centrar el logo y el formulario horizontalmente */
 }
 
-.logo-container {
+.logo {
     margin-bottom: 30px; /* Más espacio debajo del logo */
 }
 
-.logo-container img {
+.logo img {
     max-width: 150px; /* Ajustar el tamaño del logo según sea necesario */
     height: auto;
 }
 
-.login-form {
+.formLogin{
     width: 100%;
 }
 
@@ -44,7 +44,7 @@ h1 {
     margin-bottom: 30px;
 }
 
-.form-group {
+.parteForm {
     margin-bottom: 25px; /* Más espacio entre los campos */
     text-align: left;
 }
@@ -65,7 +65,7 @@ input[type="password"] {
     font-size: 16px;
 }
 
-.login-button {
+.botonLogin {
     background-color: #a9a9f5; /* Color del botón de inicio de sesión */
     color: white;
     padding: 14px 24px; /* Mayor relleno para el botón */
@@ -78,21 +78,21 @@ input[type="password"] {
     margin-top: 20px; /* Espacio antes del botón */
 }
 
-.login-button:hover {
+.botonLogin:hover {
     background-color: #8f8ff7;
 }
 
-.register-link {
+.linkRegistrar {
     margin-top: 25px;
     color: #555;
 }
 
-.register-link a {
+.linkRegistrar a {
     color: #7b68ee;
     text-decoration: none;
     font-weight: bold;
 }
 
-.register-link a:hover {
+.linkRegistrar a:hover {
     text-decoration: underline;
 }

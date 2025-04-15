@@ -16,6 +16,7 @@ class Conexion {
 
         try {
             $this->conexion = new PDO("mysql:host=$this->host;dbname=$this->bd", "$this->usu", "$this->contra");
+            $this->conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (Exception $e) {
             die("Error: ".$e->getMessage());
         }
@@ -23,6 +24,10 @@ class Conexion {
     
     public function getConexion() {
         return $this->conexion;
+    }
+
+    public function cerrarConexion() {
+        $this->conexion = null;
     }
     
 }

@@ -1,48 +1,54 @@
 <?php
-require_once '../modelo/Conexion.php';
-
-// Configura los datos de conexión a la base de datos
-$conexion = new Conexion("libreria_db", "db", "miriam", "libreria123");
-
-
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-
-    try {
-        $pdo = $conexion->getConexion();
-        $stmt = $pdo->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
-        $stmt->execute([$username, $password]);
-
-        echo "Registro exitoso. <a href='login.php'>Inicia sesión aquí</a>";
-    } catch (Exception $e) {
-        echo "Error al registrar: " . $e->getMessage();
-    }
-}
+require_once '../controlador/validaciones.php';
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <title>Registrarse - Libellus</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Libellus</title>
+    <link rel="stylesheet" href="./css/registro.css">
 </head>
+
 <body>
-    <div class="container mt-5">
-        <h2>Registro</h2>
-        <form method="POST">
-            <div class="mb-3">
-                <label for="username" class="form-label">Usuario:</label>
-                <input type="text" name="username" class="form-control" required>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Contraseña:</label>
-                <input type="password" name="password" class="form-control" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Registrarse</button>
-        </form>
+    <div class="registro">
+        <div class="logo">
+            <a href="../index.html"><img src="../img/logo_nom.png" alt="Logo Libellus"></a>
+        </div>
+        <div class="formRegistro">
+            <h1>Crear Cuenta</h1>
+
+            <!-- Mostrar mensajes de error o éxito -->
+            <?php if (isset($_GET['mensaje'])): ?>
+                <div class="alerta"><?php echo validarCadena($_GET['mensaje']); ?></div>
+            <?php endif; ?>
+
+            <form action="../controlador/controladorRegistro.php" method="POST">
+                <div class="parteForm">
+                    <label for="nombre">Nombre usuario:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="parteForm">
+                    <label for="email">Correo Electrónico:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="parteForm">
+                    <label for="contr">Contraseña:</label>
+                    <input type="password" id="contr" name="contr" required>
+                </div>
+                <div class="parteForm">
+                    <label for="confirmarContr">Confirmar Contraseña:</label>
+                    <input type="password" id="confirmarContr" name="confirmarContr" required>
+                </div>
+                <button type="submit" class="botonRegistro" name="botonRegistro">Registrarse</button>
+                <div class="linkLogin">
+                    ¿Ya tienes una cuenta? <a href="login.php">Iniciar Sesión</a>
+                </div>
+            </form>
+        </div>
     </div>
 </body>
+
 </html>

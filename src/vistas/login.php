@@ -1,55 +1,46 @@
 <?php
-require_once '../modelo/Conexion.php';
 session_start();
-
-// Configura los datos de conexión
-$conexion = new Conexion("libreria_db", "db", "miriam", "libreria123");
-
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    try {
-        $pdo = $conexion->getConexion();
-        $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");
-        $stmt->execute([$username]);
-        $user = $stmt->fetch();
-
-        if ($user && password_verify($password, $user['password'])) {
-            $_SESSION['user'] = $user['username'];
-            header('Location: repositorio.php');
-            exit();
-        } else {
-            echo "Credenciales incorrectas.";
-        }
-    } catch (Exception $e) {
-        echo "Error al iniciar sesión: " . $e->getMessage();
-    }
-}
+require_once '../controlador/validaciones.php';
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión - Libellus</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/login.css">
 </head>
+
 <body>
-    <div class="container mt-5">
-        <h2>Iniciar Sesión</h2>
-        <form method="POST">
-            <div class="mb-3">
-                <label for="username" class="form-label">Usuario:</label>
-                <input type="text" name="username" class="form-control" required>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Contraseña:</label>
-                <input type="password" name="password" class="form-control" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
-        </form>
+    <div class="login">
+        <div class="logo">
+            <a href="../index.html"><img src="../img/logo_nom.png" alt="Libellus Logo"></a>
+        </div>
+
+        <?php if (isset($_GET['mensaje'])): ?>
+            <div class="alerta"><?php echo validarCadena($_GET['mensaje']); ?></div>
+        <?php endif; ?>
+
+        <div class="formLogin">
+            <h1>Iniciar Sesión</h1>
+            <form action="../controlador/controladorLogin.php" method="POST">
+                <div class="parteForm">
+                    <label for="email">Correo Electrónico:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="parteForm">
+                    <label for="contr">Contraseña:</label>
+                    <input type="password" id="contr" name="contr" required>
+                </div>
+                <button type="submit" name="botonLogin" class="botonLogin">Iniciar Sesión</button>
+                <div class="linkRegistrar">
+                    ¿No tienes cuenta? <a href="registro.php">Registrar</a>
+                </div>
+            </form>
+        </div>
     </div>
 </body>
+
 </html>

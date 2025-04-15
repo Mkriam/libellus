@@ -92,3 +92,7 @@ CREATE TABLE GUARDA (
     FOREIGN KEY (id_libro) REFERENCES LIBRO(id_libro)
         ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+-- Asignar permisos a mi usuario
+GRANT SELECT, INSERT, UPDATE, DELETE ON libellus.* TO 'miriam'@'%';
+FLUSH PRIVILEGES;
