@@ -1,0 +1,112 @@
+body {
+    margin: 0;
+    font-family: 'Georgia', serif;
+    background-image: url('../../img/fondo.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 60px 0;
+    box-sizing: border-box;
+}
+
+.container {
+    background-color: rgba(238, 234, 247, 0.8);
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    margin-bottom: 30px;
+}
+
+.logo img {
+    max-width: 150px;
+    height: auto;
+}
+
+.form {
+    width: 100%;
+}
+
+h1 {
+    color: #7b68ee;
+    margin-bottom: 30px;
+}
+
+.parteForm {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 12px;
+    border: 1px solid whitesmoke;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.boton {
+    background-color: #a9a9f5;
+    color: white;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.boton:hover {
+    background-color: #8f8ff7;
+}
+
+.link {
+    margin-top: 25px;
+    color: grey;
+}
+
+.link a {
+    color: #7b68ee;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.link a:hover {
+    text-decoration: underline;
+}
+
+.alerta {
+    background-color: #f7e9e7;
+    color: #a94442;
+    border: 1px solid #eec9cd; 
+    padding: 15px 20px;
+    margin: 25px 0;
+    border-radius: 10px;
+    width: 95%;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 1px 3px darkred;
+}
+
